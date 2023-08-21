@@ -1,15 +1,12 @@
-import React , { useContext, useEffect } from 'react'
+import React , { useContext } from 'react'
 import NoteContext from '../context/note/NoteContext';
 
 export default function About() {
+    // eslint-disable-next-line
   const a = useContext(NoteContext);
-  useEffect(() => {
-    a.update();
-    //eslint-disable-next-line
-  },[])
   return (
     <div>
-      <h1>My name is {a.state.name} {a.state.surname}</h1>
+      <h1>My name is about</h1>
     </div>
   )
 }
