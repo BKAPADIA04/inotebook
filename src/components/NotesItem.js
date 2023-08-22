@@ -4,10 +4,14 @@ import NoteContext from "../context/note/NoteContext";
 
 export default function NotesItem(props) {
   const { note } = props;
-  const { deleteNote } = useContext(NoteContext);
+  const { deleteNote,editNote } = useContext(NoteContext);
 
   const deleteNoteLocal = () => {
     deleteNote(note._id);
+  }
+  const editNoteLocal = (title,description,tag) => {
+    // console.log("edit");
+    editNote(note._id,title,description,tag);
   }
 
   return (
@@ -17,7 +21,7 @@ export default function NotesItem(props) {
           <h5 className="card-title mx-2">{note.title}</h5>
           <p className="card-text mx-2">{note.description}</p>
           <i className="fa-solid fa-trash mx-2" onClick={deleteNoteLocal}></i>
-          <i className="fa-solid fa-pen mx-2"></i>
+          <i className="fa-solid fa-pen mx-2" onClick={editNoteLocal}></i>
           </div>
       </div>
     </div>
