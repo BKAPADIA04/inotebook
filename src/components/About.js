@@ -5,8 +5,8 @@ export default function About() {
     // eslint-disable-next-line
   const a = useContext(NoteContext);
   return (
-    <div>
-      <h1>My name is about</h1>
+    <div className="container my-3">
+      <h2>My name is about</h2>
     </div>
   )
 }
