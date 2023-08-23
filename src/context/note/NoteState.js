@@ -65,13 +65,13 @@ const NoteState = (props) => {
     //API Call
     const url = `${host}api/notes/updateNote/${id}`;
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRkYzljYzc2YWIzNWIxOThhODZmNzQ3In0sImlhdCI6MTY5MjY4NTM4Nn0.5qWfcCVWeUSLhtIe_YsrBDlXyiazmtPMRxWmYPjZzTk",
       },
-      body: { title, description, tag }, // body data type must match "Content-Type" header
+      body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
     const data = await response.json(); // parses JSON response into native JavaScript objects
     console.log(data);

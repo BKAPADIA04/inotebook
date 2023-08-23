@@ -66,16 +66,6 @@ export default function AddNote() {
             autoComplete="off"
           ></input>
         </div>
-        <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          ></input>
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
-        </div>
         <button type="reset" className="btn btn-primary" onClick={handleClick}>
           Add Note
         </button>
