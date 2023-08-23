@@ -87,6 +87,8 @@ export default function Notes() {
                   onChange={handleChange}
                   autoComplete="off"
                   value={note.etitle}
+                  minLength={3}
+                  required
                 ></input>
                 {/*<div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -104,6 +106,8 @@ export default function Notes() {
                   onChange={handleChange}
                   autoComplete="off"
                   value={note.edescription}
+                  minLength={5}
+                  required
                 ></input>
               </div>
               <div className="mb-3">
@@ -118,6 +122,8 @@ export default function Notes() {
                   onChange={handleChange}
                   autoComplete="off"
                   value={note.etag}
+                  minLength={3}
+                  required
                 ></input>
               </div>
               <div className="modal-footer">
@@ -129,7 +135,7 @@ export default function Notes() {
                 >
                   Close
                 </button>
-                <button type="reset" className="btn btn-primary" onClick={handleClick}>
+                <button disabled={note.etitle.length < 3 || note.edescription.length < 5 || note.etag.length < 3} type="reset" className="btn btn-primary" onClick={handleClick}>
                   Update
                 </button>
               </div>
@@ -140,6 +146,9 @@ export default function Notes() {
 
       <div className="row mx-2">
         <h2>Your Notes</h2>
+        <div className="container">
+          {notes.length === 0 && 'No Notes To Display'}
+        </div>
         {notes.map((note, index) => {
           return <NotesItem key={index} updateNote={updateNote} note={note} />;
         })}

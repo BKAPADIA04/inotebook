@@ -35,6 +35,8 @@ export default function AddNote() {
             aria-describedby="emailHelp"
             onChange={handleChange}
             autoComplete="off"
+            minLength={3}
+            required
           ></input>
           {/*<div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -51,6 +53,8 @@ export default function AddNote() {
             id="exampleInputPassword1"
             onChange={handleChange}
             autoComplete="off"
+            minLength={5}
+            required
           ></input>
         </div>
         <div className="mb-3">
@@ -64,9 +68,11 @@ export default function AddNote() {
             id="exampleInputPassword1"
             onChange={handleChange}
             autoComplete="off"
+            minLength={3}
+            required
           ></input>
         </div>
-        <button type="reset" className="btn btn-primary" onClick={handleClick}>
+        <button disabled = {note.title.length < 3 || note.description.length < 5 || note.tag.length < 3} type="reset" className="btn btn-primary" onClick={handleClick}>
           Add Note
         </button>
       </form>
