@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
@@ -30,7 +30,7 @@ const NoteState = (props) => {
         "auth-token":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRkYzljYzc2YWIzNWIxOThhODZmNzQ3In0sImlhdCI6MTY5MjY4NTM4Nn0.5qWfcCVWeUSLhtIe_YsrBDlXyiazmtPMRxWmYPjZzTk",
       },
-      body: { title, description, tag }, // body data type must match "Content-Type" header
+      body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
     const data = await response.json(); // parses JSON response into native JavaScript objects
     console.log(data);

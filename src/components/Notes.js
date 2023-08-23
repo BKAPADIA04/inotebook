@@ -11,8 +11,8 @@ export default function Notes() {
     useEffect(() => {
       getNotes()
       //eslint-disable-next-line
-    }, []);
-    console.log(notes);
+    });
+    // console.log(notes);
   return (
     <>
       <AddNote />

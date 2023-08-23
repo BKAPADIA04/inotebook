@@ -12,6 +12,8 @@ export default function AddNote() {
 
   const handleClick = (event) => {
     event.preventDefault();
+    event.target.name = event.target.value;
+    // console.log(note.title,note.description,note.tag);
     addNote(note.title,note.description,note.tag);
     const form = document.getElementById('form_addNote');
     form.reset();

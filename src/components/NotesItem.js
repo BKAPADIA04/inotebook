@@ -7,6 +7,7 @@ export default function NotesItem(props) {
   const { deleteNote,editNote } = useContext(NoteContext);
 
   const deleteNoteLocal = () => {
+    // console.log(note._id);
     deleteNote(note._id);
   }
   const editNoteLocal = (title,description,tag) => {
