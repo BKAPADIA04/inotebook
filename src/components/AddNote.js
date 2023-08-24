@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/note/NoteContext";
-export default function AddNote() {
+export default function AddNote(props) {
   const context = useContext(NoteContext);
   const { addNote } = context;
 
@@ -15,6 +15,7 @@ export default function AddNote() {
     event.target.name = event.target.value;
     // console.log(note.title,note.description,note.tag);
     addNote(note.title,note.description,note.tag);
+    props.showAlert("Note Added Successfully","success");
     const form = document.getElementById('form_addNote');
     form.reset();
   };

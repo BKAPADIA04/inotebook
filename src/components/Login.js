@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import {useHistory} from 'react-router-dom' ;
 
-export default function Login() {
+export default function Login(props) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   let navigate = useNavigate();
@@ -33,26 +33,27 @@ export default function Login() {
     console.log(data);
 
     if (data.success === true) {
-
+      props.showAlert("Logged In Successfully","success");
       setCredentials({ email: "", password: "" });
       localStorage.setItem("token", data.authToken);
       navigate("/");
     } else {
-      alert("Login with correct credentials");
+      props.showAlert("Please Login With Correct Credentials","danger");
     }
   };
-  let validEmail = (email) => {
-    const emailFormat =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    return emailFormat.test(email);
-  }
+    let validEmail = (email) => {
+        const emailFormat =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        return emailFormat.test(email);
+    }
     let isPasswordEmpty = (password) => {
       return password.length === 0;
     }
 
+
   return (
     <form id="form_login" onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group my-2">
         <label htmlFor="exampleInputEmail1">Email address</label>
         <input
           type="email"

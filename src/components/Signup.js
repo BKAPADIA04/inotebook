@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function Signup(props) {
 
     const [credentials, setCredentials] = useState({ name: "",email: "", password: "",cpassword: "" });
 
@@ -15,6 +15,12 @@ export default function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if(credentials.password !== credentials.cpassword) {
+        props.showAlert("Password and Confirm Password are not equal","danger");
+        return;
+    }
+    
     // console.log(credentials.password);
     const url = `${host}api/user_auth/`;
 
@@ -34,12 +40,18 @@ export default function Signup() {
     console.log(data);
 
     if (data.success === true) {
-
+    props.showAlert("Signup Successful","success");
       setCredentials({ name:"",email: "", password: "", cpassword: ""});
       localStorage.setItem("token", data.authToken);
       navigate("/");
     } else {
-      alert("Login with correct credentials");
+        console.log(data.errors);
+        for (const errorObject of data.errors.array()) {
+            const errorMsg = errorObject.msg;
+            console.log(errorMsg);
+            
+          }
+      props.showAlert("This Account Details Are Invalid","danger")
     }
   };
 
@@ -55,7 +67,7 @@ export default function Signup() {
 
   return (
     <form id="form_login" onSubmit={handleSubmit}>
-    <div className="form-group">
+    <div className="form-group my-2">
     <label htmlFor="exampleInputEmail1">Name</label>
         <input
           type="text"
@@ -99,9 +111,22 @@ export default function Signup() {
           required
         ></input>
       </div>
+      <div className="form-group">
+      <label htmlFor="exampleInputPassword2">Confirm Password</label>
+      <input
+        type="password"
+        className="form-control"
+        id="exampleInputPassword2"
+        name="cpassword"
+        placeholder="Password"
+        onChange={handleChange}
+        value={credentials.cpassword}
+        required
+      ></input>
+    </div>
       <button
         disabled={
-          !validEmail(credentials.email) || isPasswordEmpty(credentials.password)
+          !validEmail(credentials.email) || isPasswordEmpty(credentials.password) || isPasswordEmpty(credentials.cpassword)
         }
         type="submit"
         className="btn btn-primary"

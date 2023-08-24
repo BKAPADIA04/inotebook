@@ -9,6 +9,7 @@ export default function NotesItem(props) {
   const deleteNoteLocal = () => {
     // console.log(note._id);
     deleteNote(note._id);
+    props.showAlert("Note Deleted Successfully","success");
   }
   // const editNoteLocal = (title,description,tag) => {
   //   console.log("edit");
