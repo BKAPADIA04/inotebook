@@ -33,6 +33,7 @@ export default function Login() {
     console.log(data);
 
     if (data.success === true) {
+
       setCredentials({ email: "", password: "" });
       localStorage.setItem("token", data.authToken);
       navigate("/");
@@ -48,7 +49,6 @@ export default function Login() {
     let isPasswordEmpty = (password) => {
       return password.length === 0;
     }
-
 
   return (
     <form id="form_login" onSubmit={handleSubmit}>
