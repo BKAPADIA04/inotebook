@@ -36,6 +36,8 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
+          <Link className="btn btn-primary btn active mx-1" role="button" aria-pressed="true" to = "/login">Login</Link>
+          <Link className="btn btn-primary btn active mx-1" role="button" aria-pressed="true" to = "/signup">Signup</Link>
         </div>
       </nav>
     </>
