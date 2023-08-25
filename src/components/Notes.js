@@ -43,7 +43,8 @@ export default function Notes(props) {
     {
       navigate("/login");
     }
-  });
+    //eslint-disable-next-line
+  },[]);
   // console.log(note);
   // console.log(notes);
 

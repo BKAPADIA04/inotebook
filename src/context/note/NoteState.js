@@ -72,14 +72,17 @@ const NoteState = (props) => {
     const data = await response.json(); // parses JSON response into native JavaScript objects
     console.log(data);
 
+    let newNotes = JSON.parse(JSON.stringify(notes));
     for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+      const element = newNotes[index];
       if (element._id === id) {
         element.title = title;
         element.description = description;
         element.tag = tag;
+        break;
       }
     }
+    setNotes(newNotes);
   };
   return (
     <NoteContext.Provider

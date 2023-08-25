@@ -47,7 +47,6 @@ export default function Navbar() {
           <Link className="btn btn-primary btn active mx-1" role="button" aria-pressed="true" to = "/login">Login</Link>
           <Link className="btn btn-primary btn active mx-1" role="button" aria-pressed="true" to = "/signup">Signup</Link></form>:
           <button onClick = {handleLogout} className = "btn btn-primary btn active mx-1">Log out</button>}
-          
           </div>
       </nav>
     </>
