@@ -45,12 +45,12 @@ export default function Signup(props) {
       localStorage.setItem("token", data.authToken);
       navigate("/");
     } else {
-        console.log(data.errors);
-        for (const errorObject of data.errors.array()) {
-            const errorMsg = errorObject.msg;
-            console.log(errorMsg);
+        console.log(typeof(data.error));
+        // for (const errorObject of data.errors.array) {
+        //     const errorMsg = errorObject.msg;
+        //     console.log(errorMsg);
             
-          }
+        //   }
       props.showAlert("This Account Details Are Invalid","danger")
     }
   };
@@ -67,6 +67,7 @@ export default function Signup(props) {
 
   return (
     <form id="form_login" onSubmit={handleSubmit}>
+    <div className="container mt-2"><h2>Create An Account To Access iNoteBook</h2>
     <div className="form-group my-2">
     <label htmlFor="exampleInputEmail1">Name</label>
         <input
@@ -133,6 +134,7 @@ export default function Signup(props) {
       >
         Sign Up
       </button>
+      </div>
     </form>
   )
 }
